@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase;
 
 /**
  * Class for Json type ID resolver.
+ *
  * @author Laurent Caceres
  */
 public class JsonLowerCaseResolver extends TypeIdResolverBase {

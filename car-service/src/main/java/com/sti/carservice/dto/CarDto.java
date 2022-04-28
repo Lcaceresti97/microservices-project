@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Car DTO class to encapsulate implementation of entity.
+ *
  * @author Laurent Caceres
  * @version 1.0.0
  */

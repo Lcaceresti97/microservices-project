@@ -20,6 +20,7 @@ import java.util.Set;
 
 /**
  * Class used to return API Error response.
+ *
  * @author Laurent Caceres
  * @version 1.0.1
  */
@@ -43,34 +44,36 @@ public class ErrorResponse {
     private String debugMessage;
 
     @JsonProperty("subErrors")
-    private List<SubError>subErrors = new ArrayList<>();
+    private List<SubError> subErrors = new ArrayList<>();
 
-    private ErrorResponse(){
+    private ErrorResponse() {
         this.date = Instant.now();
     }
 
     /**
      * HttpStatus constructor.
+     *
      * @param httpStatus
      */
-    public ErrorResponse(HttpStatus httpStatus){
+    public ErrorResponse(HttpStatus httpStatus) {
         this();
         this.httpStatus = httpStatus;
     }
 
     /**
      * HttpStatus and Throwable args constructor.
+     *
      * @param httpStatus
      * @param ex
      */
-    public ErrorResponse(HttpStatus httpStatus, Throwable ex){
+    public ErrorResponse(HttpStatus httpStatus, Throwable ex) {
         this();
         this.httpStatus = httpStatus;
         this.message = "Unexpected error.";
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-    public ErrorResponse(HttpStatus httpStatus, String message, Throwable ex){
+    public ErrorResponse(HttpStatus httpStatus, String message, Throwable ex) {
         this();
         this.httpStatus = httpStatus;
         this.message = message;
@@ -79,6 +82,7 @@ public class ErrorResponse {
 
     /**
      * Add Sub Error to list.
+     *
      * @param subError SubError
      */
     private void addSubError(SubError subError) {
@@ -87,7 +91,8 @@ public class ErrorResponse {
 
     /**
      * Add validation Error to list
-     * @param object object name
+     *
+     * @param object  object name
      * @param message error message
      */
     private void addValidationError(String object, String message) {
@@ -96,18 +101,20 @@ public class ErrorResponse {
 
     /**
      * add validation error to list.
-     * @param object object name
-     * @param field object field
+     *
+     * @param object        object name
+     * @param field         object field
      * @param rejectedValue rejectedObject
-     * @param message error message
+     * @param message       error message
      */
     private void addValidationError
-            (String object, String field, Object rejectedValue, String message) {
+    (String object, String field, Object rejectedValue, String message) {
         this.addSubError(new ValidationError(object, field, rejectedValue, message));
     }
 
     /**
      * add FieldError to sub errors.
+     *
      * @param fieldError
      */
     private void addValidationError(FieldError fieldError) {
@@ -118,6 +125,7 @@ public class ErrorResponse {
 
     /**
      * Add object error to sub errors.
+     *
      * @param objectError ObjectError
      */
     private void addValidationError(ObjectError objectError) {
@@ -126,6 +134,7 @@ public class ErrorResponse {
 
     /**
      * Add a list of fieldErrors to Sub errors.
+     *
      * @param fieldErrors List FieldError
      */
     public void addValidationErrors(List<FieldError> fieldErrors) {
@@ -135,6 +144,7 @@ public class ErrorResponse {
 
     /**
      * Add a list of Object Errors to Sub errors.
+     *
      * @param objectErrors
      */
     public void addValidationError(List<ObjectError> objectErrors) {
@@ -145,6 +155,7 @@ public class ErrorResponse {
 
     /**
      * Add a constraint violation to sub errors.
+     *
      * @param constraintViolation
      */
     private void addValidationError(ConstraintViolation<?> constraintViolation) {
@@ -156,6 +167,7 @@ public class ErrorResponse {
 
     /**
      * Add a Set of Constraint Violations to Sub errors.
+     *
      * @param constraintViolations
      */
     public void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {

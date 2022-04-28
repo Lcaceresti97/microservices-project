@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CarMapper {
 
-    Car dtoToCar (CarDto dto);
+    Car dtoToCar(CarDto dto);
 
     CarDto carToDto(Car car);
 

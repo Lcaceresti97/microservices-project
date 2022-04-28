@@ -10,7 +10,7 @@ public enum MessageKey {
 
     public final String key;
 
-    public String getKey(){
+    public String getKey() {
         return this.key;
     }
 

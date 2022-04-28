@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Service class for Car entity.
+ *
  * @author Laurent Caceres
  * @version 1.0.0
  */
@@ -42,7 +43,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto findCarById(String carId) throws CarNotFoundException {
         Car car = carRepository.findById(carId).orElseThrow(() -> CarNotFoundException.buildCarNotFoundExceptionForId(carId));
-        return carMapper.carToDto(isActiveCar(car,"carId", carId));
+        return carMapper.carToDto(isActiveCar(car, "carId", carId));
     }
 
     @Override
@@ -55,14 +56,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Page<CarDto> findPaginatedSortedCar(final String carModel,final int page, final int size, final String[] sort) {
+    public Page<CarDto> findPaginatedSortedCar(final String carModel, final int page, final int size, final String[] sort) {
         List<Sort.Order> orders = sortingPagingUtils.getSortOrders(sort);
         Pageable pageable = PageRequest.of(page, size, Sort.by(orders));
         List<CarDto> carDtos;
-        if (carModel == null){
+        if (carModel == null) {
             carDtos = carMapper.carToDto(carRepository.findAll(pageable).toList());
         } else {
-            carDtos = carMapper.carToDto(carRepository.findByCarModelContaining(carModel,pageable).toList());
+            carDtos = carMapper.carToDto(carRepository.findByCarModelContaining(carModel, pageable).toList());
         }
         return new PageImpl<>(carDtos);
     }
@@ -76,14 +77,15 @@ public class CarServiceImpl implements CarService {
 
     /**
      * Return Car if status code is ACTIVE.
-     * @param car Car
-     * @param queryField String
+     *
+     * @param car             Car
+     * @param queryField      String
      * @param queryFieldValue String
      * @return User
      * @throws CarNotFoundException ex
      */
-    private Car isActiveCar(Car car, String queryField, String queryFieldValue){
-        if(car.getCarStatus().getStatusCode() == 0){
+    private Car isActiveCar(Car car, String queryField, String queryFieldValue) {
+        if (car.getCarStatus().getStatusCode() == 0) {
             return car;
         }
         throw CarNotFoundException

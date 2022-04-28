@@ -10,21 +10,22 @@ import java.util.List;
 
 /**
  * Dto for PageResponse.
- * @author  Laurent Caceres
+ *
  * @param <T>
+ * @author Laurent Caceres
  */
 @Builder
 @JsonSerialize
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageResponseDto<T> implements PageResponse<T>{
+public class PageResponseDto<T> implements PageResponse<T> {
 
 
     @JsonProperty("pageSize")
     private int pageSize;
 
     @JsonProperty("numberOfElements")
-    private int  numberOfElements;
+    private int numberOfElements;
 
     @JsonProperty("totalPages")
     private int totalPages;

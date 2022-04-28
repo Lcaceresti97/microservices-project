@@ -8,6 +8,7 @@ import java.util.Locale;
 
 /**
  * Messages class for retrieving messages from resources.
+ *
  * @author Laurent Caceres
  */
 @Component
@@ -16,7 +17,7 @@ public class Messages {
     @Autowired
     private MessageSource messageSource;
 
-    public String getMessage(String messageKey){
+    public String getMessage(String messageKey) {
         return messageSource.getMessage(messageKey, null, Locale.ENGLISH);
     }
 

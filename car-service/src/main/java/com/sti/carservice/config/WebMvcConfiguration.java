@@ -10,7 +10,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 public class WebMvcConfiguration {
 
     @Bean
-    public ResourceBundleMessageSource messageSource(){
+    public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasename("static/messages");
         source.setUseCodeAsDefaultMessage(true);
@@ -18,7 +18,7 @@ public class WebMvcConfiguration {
     }
 
     @Bean
-    public SortingPagingUtils sortingPagingUtils(){
+    public SortingPagingUtils sortingPagingUtils() {
         return new SortingPagingUtils();
     }
 

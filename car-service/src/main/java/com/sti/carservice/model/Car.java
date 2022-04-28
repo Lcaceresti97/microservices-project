@@ -8,6 +8,7 @@ import java.util.UUID;
 
 /**
  * Car class to represent Car entity.
+ *
  * @author Laurent Caceres
  * @version 1.0.0
  */
@@ -38,9 +39,10 @@ public class Car {
 
     /**
      * Adds fields which are not populated by Car DTO.
+     *
      * @return
      */
-    public static Car buildFromDto(Car car){
+    public static Car buildFromDto(Car car) {
         car.setCarId(UUID.randomUUID().toString());
         car.setCarStatus(ModelStatus.ACTIVE);
         return car;
@@ -48,9 +50,9 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o == null) return false;
-        if(o.getClass() != this.getClass()) return false;
+        if (this == o) return true;
+        if (o == null) return false;
+        if (o.getClass() != this.getClass()) return false;
         Car car = (Car) o;
         return this.carId == car.carId
                 && (this.carMake.equals(car.carMake))
@@ -66,11 +68,11 @@ public class Car {
         return hash;
     }
 
-    private void setCarId(final String carId){
+    private void setCarId(final String carId) {
         this.carId = carId;
     }
 
-    public void setCarStatus(ModelStatus modelStatus){
+    public void setCarStatus(ModelStatus modelStatus) {
         this.carStatus = modelStatus;
     }
 }
